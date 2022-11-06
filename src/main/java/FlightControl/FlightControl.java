@@ -26,7 +26,15 @@ public class FlightControl {
         this.airplanes.putIfAbsent(id, plane);
     }
 
-    public Plane getPlane(String idKey) { 
+    public void addFlight(Destination destination, Plane plane) {
+        this.flights.putIfAbsent(destination, plane);
+    }
+
+    public Plane getPlane(String idKey) {
         return this.airplanes.get(idKey);
+    }
+
+    public void printAirplanes() {
+
     }
 }
