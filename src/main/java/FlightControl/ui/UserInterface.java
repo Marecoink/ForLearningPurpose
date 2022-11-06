@@ -7,6 +7,7 @@ package FlightControl.ui;
 
 import FlightControl.FlightControl;
 import FlightControl.domain.Plane;  // check FlightControl.* later
+import FlightControl.domain.Destination;
 import java.util.Scanner;
 
 /**
@@ -35,25 +36,34 @@ public class UserInterface {
             System.out.println("[1] Add an airplane");
             System.out.println("[2] Add a flight");
             System.out.println("[x] Exit Airport Asset Control");
-            String input = scanner.nextLine();
-//            try {
-            if (input.equals("x")) {
-                System.out.println("this will move to FlightControl method"); // FlightControl to be added
-                break;
-            } else if (input.equals("1")) {
-                System.out.println("Plane adding test start"); // delete
-                System.out.println("Give the airplane id");
-                String planeID = scanner.nextLine();
-                System.out.println("Give the airplane capacity");
-                String planeCap = scanner.nextLine();
-                flightControl.addPlane(planeID, new Plane(planeID, Integer.valueOf(planeCap)));
-                System.out.println(flightControl.getPlane(planeID)); // Plane addidng test ends, delete
-            } else if (input.equals("2")) {
-                System.out.println("Flight will be added");//add later on FC.domain - Flight
+            try {
+                String input = scanner.nextLine();
+                if (input.equals("x")) {
+                    System.out.println("this will move to FlightControl method"); // FlightControl to be added
+                    break;
+                } else if (input.equals("1")) {
+                    System.out.println("Plane adding test start"); // delete
+                    System.out.println("Give the airplane id");
+                    String planeID = scanner.nextLine();
+                    System.out.println("Give the airplane capacity");
+                    String planeCap = scanner.nextLine();
+                    this.flightControl.addPlane(planeID, new Plane(planeID, Integer.valueOf(planeCap)));
+                    System.out.println(this.flightControl.getPlane(planeID)); // Plane addidng test ends, delete
+                } else if (input.equals("2")) {
+                    System.out.println("Give the airplane id: ");
+                    String planeID = scanner.nextLine();
+                    //if absent - return
+                    Plane planeNewFlight = this.flightControl.getPlane(planeID);
+                    System.out.println("Give the departure airport id: ");
+                    String departure = scanner.nextLine();
+                    System.out.println("Give the target airport id: ");
+                    String target = scanner.nextLine();
+                    Destination destination = new Destination(departure, target);
+                    this.flightControl.addFlight(destination, planeNewFlight);
+                }
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
             }
-//            } catch (Exception e) {
-//                System.out.println("Error: " + e.getMessage());
-//            }
         }
     }
 

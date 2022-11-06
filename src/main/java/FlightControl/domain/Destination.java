@@ -15,10 +15,10 @@ public class Destination {
 
     private HashMap<String, String> flights;
 
-    public Destination() {
+    public Destination(String departure, String target) {
         this.flights = new HashMap<>();
+        this.flights.putIfAbsent(departure, target);
     }
-    
-    //addDestination 
 
+    //addDestination 
 }
