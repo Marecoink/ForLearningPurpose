@@ -5,7 +5,8 @@
  */
 package FlightControl.ui;
 
-import FlightControl.domain.Plane;
+import FlightControl.FlightControl;
+import FlightControl.domain.Plane;  // check FlightControl.* later
 import java.util.Scanner;
 
 /**
@@ -15,17 +16,20 @@ import java.util.Scanner;
 public class UserInterface {
 
     private Scanner scanner;
+    FlightControl flightControl = new FlightControl();
 
     public UserInterface() {
         this.scanner = new Scanner(System.in);
     }
 
     public void start() {
+
         AirportAssetControl();
         FlightControl();
     }
 
     public void AirportAssetControl() {
+
         while (true) {
             System.out.println("Chose an action:");
             System.out.println("[1] Add an airplane");
@@ -37,14 +41,13 @@ public class UserInterface {
                 System.out.println("this will move to FlightControl method"); // FlightControl to be added
                 break;
             } else if (input.equals("1")) {
-                System.out.println("Plane adding test start");
+                System.out.println("Plane adding test start"); // delete
                 System.out.println("Give the airplane id");
                 String planeID = scanner.nextLine();
                 System.out.println("Give the airplane capacity");
                 String planeCap = scanner.nextLine();
-//                Plane newPlane = new Plane(planeID, Integer.valueOf(planeCap)); //get from flightControl
-//                newPlane.addPlane(planeID, newPlane);
-//                System.out.println(newPlane.getPlane(planeID));
+                flightControl.addPlane(planeID, new Plane(planeID, Integer.valueOf(planeCap)));
+                System.out.println(flightControl.getPlane(planeID)); // Plane addidng test ends, delete
             } else if (input.equals("2")) {
                 System.out.println("Flight will be added");//add later on FC.domain - Flight
             }

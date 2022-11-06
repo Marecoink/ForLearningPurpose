@@ -11,19 +11,14 @@ import java.util.HashMap;
  *
  * @author Maro
  */
-public class Plane {
+public class Destination {
 
-    private String id;
-    private int capacity;
+    private HashMap<String, String> flights;
 
-    public Plane(String id, int capacity) {
-        this.id = id;
-        this.capacity = capacity;
+    public Destination() {
+        this.flights = new HashMap<>();
     }
-
-    @Override
-    public String toString() {
-        return this.id + " (" + capacity + ")";
-    }
+    
+    //addDestination 
 
 }
