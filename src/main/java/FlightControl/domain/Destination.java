@@ -20,5 +20,11 @@ public class Destination {
         this.flights.putIfAbsent(departure, target);
     }
 
-    //addDestination 
+    @Override
+    public String toString() {
+        for (String departure : this.flights.keySet()) {
+            return "(" + departure + "-" + this.flights.get(departure) + ")";
+        }
+        return null;
+    }
 }

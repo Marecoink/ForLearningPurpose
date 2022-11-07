@@ -21,9 +21,13 @@ public class Plane {
         this.capacity = capacity;
     }
 
+    public String getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
-        return this.id + " (" + capacity + ")";
+        return this.id + " (" + capacity + " capacity)";
     }
 
 }

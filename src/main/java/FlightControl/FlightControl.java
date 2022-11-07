@@ -15,7 +15,7 @@ import FlightControl.domain.*;
 public class FlightControl {
 
     private HashMap<String, Plane> airplanes;
-    private HashMap<Destination, Plane> flights;
+    private HashMap<Destination, String> flights;
 
     public FlightControl() {
         this.airplanes = new HashMap<>();
@@ -26,7 +26,7 @@ public class FlightControl {
         this.airplanes.putIfAbsent(id, plane);
     }
 
-    public void addFlight(Destination destination, Plane plane) {
+    public void addFlight(Destination destination, String plane) {
         this.flights.putIfAbsent(destination, plane);
     }
 
@@ -34,7 +34,23 @@ public class FlightControl {
         return this.airplanes.get(idKey);
     }
 
-    public void printAirplanes() {
+    public String getPlaneToDestination(Destination destination) {
+        return this.flights.get(destination);
+    }
 
+    public void printPlane(String planeID) {
+        System.out.println(getPlane(planeID));
+    }
+
+    public void printAirplanes() {
+        for (String plane : this.airplanes.keySet()) {
+            printPlane(plane);
+        }
+    }
+
+    public void printFlights() {
+        for (Destination destination : this.flights.keySet()) {
+            System.out.println(getPlane(this.getPlaneToDestination(destination)) + " " + destination.toString());
+        }
     }
 }
